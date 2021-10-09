@@ -19,7 +19,6 @@ class FirstForm(QMainWindow):
         self.setGeometry(300, 300, 300, 300)
         # А также его заголовок
         self.setWindowTitle('Первая форма')
-
         self.btn = QPushButton(self)
         self.btn.setText("Другая форма")
         self.btn.resize(self.btn.sizeHint())

@@ -1,5 +1,6 @@
 import sys
 
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton
 from PyQt5.QtWidgets import QLabel, QLCDNumber
 from HM_5 import Ui_MainWindow
@@ -31,21 +32,26 @@ class Example(QMainWindow, Ui_MainWindow):
         name.setEnabled(False)
 
         if self.radioButton.isChecked() and self.count % 2 != 0:
-            name.setText('x')
-            self.lst[self.lst_button.index(name)] = 'x'
+            name.setText('X')
+            name.setFont(QFont('Times', 35))
+            self.lst[self.lst_button.index(name)] = 'X'
         elif not self.radioButton_2.isChecked():
-            name.setText('o')
-            self.lst[self.lst_button.index(name)] = 'o'
+            name.setText('O')
+            name.setFont(QFont('Times', 35))
+            self.lst[self.lst_button.index(name)] = 'O'
 
         if self.radioButton_2.isChecked() and self.count % 2 != 0:
-            name.setText('o')
-            self.lst[self.lst_button.index(name)] = 'o'
+            name.setText('O')
+            name.setFont(QFont('Times', 35))
+            self.lst[self.lst_button.index(name)] = 'O'
         elif not self.radioButton.isChecked():
-            name.setText('x')
-            self.lst[self.lst_button.index(name)] = 'x'
+            name.setText('X')
+            name.setFont(QFont('Times', 35))
+            self.lst[self.lst_button.index(name)] = 'X'
 
         if self.check_win(self.lst):
             self.label.setText(f'Победил {self.check_win(self.lst)}!')
+            self.label.setFont(QFont('Times', 40))
             for i in self.lst_button:
                 i.setEnabled(False)
             self.lst = ['1', '2', '3',
@@ -55,6 +61,7 @@ class Example(QMainWindow, Ui_MainWindow):
 
         if self.count == 9:
             self.label.setText('Ничья')
+            self.label.setFont(QFont('Times', 40))
 
     def newgame(self):
         for i in self.lst_button:
@@ -62,6 +69,10 @@ class Example(QMainWindow, Ui_MainWindow):
         self.label.setText('')
         for i in self.lst_button:
             i.setEnabled(True)
+        self.lst = ['1', '2', '3',
+                    '4', '5', '6',
+                    '7', '8', '9']
+        self.count = 0
 
     def check_win(self, board):
         win_coord = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))

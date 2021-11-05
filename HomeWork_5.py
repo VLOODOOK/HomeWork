@@ -51,7 +51,7 @@ class Example(QMainWindow, Ui_MainWindow):
 
         if self.check_win(self.lst):
             self.label.setText(f'Победил {self.check_win(self.lst)}!')
-            self.label.setFont(QFont('Times', 40))
+            self.label.setFont(QFont('Times', 10))
             for i in self.lst_button:
                 i.setEnabled(False)
             self.lst = ['1', '2', '3',
